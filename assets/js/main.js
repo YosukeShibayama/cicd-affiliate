@@ -2,8 +2,8 @@ const message = document.querySelector("#message");
 const button = document.querySelector("#changeMessageButton");
 
 const messages = [
+  "Hello Youtube",
   "Hello, World!",
-  "こんにちは、世界！",
   "GitHub Pages ready!"
 ];
 
