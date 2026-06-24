@@ -29,10 +29,9 @@ class ForecastModel {
     const locationMultiplier = {
       'tokyo': 1.0,
       'kanagawa': 0.95,
-      'osaka': 0.92,
-      'kyoto': 0.90,
-      'other': 0.85
-    }[location] || 0.9;
+      'chiba': 0.93,
+      'saitama': 0.94
+    }[location] || 0.92;
 
     depreciationRate *= locationMultiplier;
     depreciationRate = Math.min(depreciationRate, 0.05); // 最大5%の年率に制限

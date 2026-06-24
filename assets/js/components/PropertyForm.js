@@ -107,9 +107,8 @@ export default {
             <option value="">--選択してください--</option>
             <option value="tokyo">東京都</option>
             <option value="kanagawa">神奈川県</option>
-            <option value="osaka">大阪府</option>
-            <option value="kyoto">京都府</option>
-            <option value="other">その他</option>
+            <option value="chiba">千葉県</option>
+            <option value="saitama">埼玉県</option>
           </select>
         </div>
 

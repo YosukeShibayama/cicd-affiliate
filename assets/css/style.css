@@ -245,6 +245,72 @@ button:disabled {
   font-weight: 500;
 }
 
+.api-test-section {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 40px;
+}
+
+.api-test-section h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.api-test-section p,
+.api-test-section label {
+  color: #202124;
+  font-size: 14px;
+}
+
+.api-spec {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.api-spec h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.api-request-body,
+.api-response-body,
+.api-test-form textarea,
+.api-test-form pre {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.api-test-form {
+  margin-top: 20px;
+}
+
+.api-test-form button {
+  margin-top: 16px;
+}
+
+.status-message {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.api-response {
+  margin-top: 20px;
+}
+
 .analysis {
   background: #f0f7ff;
   padding: 20px;
