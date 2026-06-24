@@ -3,17 +3,237 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Youtube</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta
+      name="description"
+      content="はじめてのAI副業ラボは、AIツール、Web制作、副業をこれから学ぶ初心者向けの静的メディアです。"
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="はじめてのAI副業ラボ">
+    <meta property="og:title" content="はじめてのAI副業ラボ">
+    <meta
+      property="og:description"
+      content="AIツールとWeb制作を副業初心者向けにやさしく整理する学習メディアです。"
+    >
+    <meta
+      property="og:url"
+      content="https://yosukeshibayama.github.io/cicd-affiliate/"
+    >
+    <title>はじめてのAI副業ラボ | AIツール × Web制作 × 副業初心者</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <main class="page">
-      <section class="hello">
-        <h1 id="message">Hello Youtube</h1>
-        <button id="changeMessageButton" type="button">Change message</button>
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-logo" href="index.html">はじめてのAI副業ラボ</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          メニュー
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+          <a href="index.html">トップ</a>
+          <a href="about.html">このサイトについて</a>
+          <a href="disclosure.html">広告表記</a>
+          <a href="privacy.html">プライバシー</a>
+        </nav>
+      </div>
+      <p class="ad-notice">
+        当サイトは広告・アフィリエイトリンクを含む場合があります。
+      </p>
+    </header>
+
+    <main id="main">
+      <section class="hero section">
+        <div class="hero-content">
+          <p class="eyebrow">AI tools / Web production / Side work</p>
+          <h1>AIツールとWeb制作を、はじめての副業目線で学ぶ。</h1>
+          <p class="hero-lead">
+            専門用語で迷いやすいAIツール、LP制作、GitHub Pages、レンタルサーバーの考え方を、
+            初心者2人チームで学びながら整理していく小さなメディアです。
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#articles">記事を読む</a>
+            <a class="button button-secondary" href="about.html">運営方針を見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Start here</p>
+          <h2>このサイトで扱うこと</h2>
+          <p>
+            収益を保証するものではなく、学習・比較・判断材料として使える情報を少しずつ増やします。
+          </p>
+        </div>
+        <div class="card-grid three-columns">
+          <article class="card">
+            <span class="card-label">AIツール</span>
+            <h3>文章作成や調査の補助</h3>
+            <p>
+              ChatGPTなどのAIツールを、Web制作や副業準備でどう使えるかを初心者向けに整理します。
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-label">Web制作</span>
+            <h3>LPと静的サイトの基礎</h3>
+            <p>
+              HTML/CSS/JavaScript、GitHub Pages、公開までの流れを小さく試せる形でまとめます。
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-label">副業準備</span>
+            <h3>無理なく始める判断軸</h3>
+            <p>
+              ツールやサーバーの選び方、費用感、学習順序を、誇大表現を避けて比較します。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-muted" id="articles">
+        <div class="section-heading">
+          <p class="eyebrow">Articles</p>
+          <h2>記事一覧</h2>
+          <p>まずは雛形です。もう1人の開発者が別ブランチで内容を作り込む想定です。</p>
+        </div>
+        <div class="article-list">
+          <article class="article-card">
+            <p class="article-category">AIツール</p>
+            <h3>
+              <a href="articles/ai-tools-beginner.html">
+                副業初心者向けAIツールの選び方
+              </a>
+            </h3>
+            <p>目的、費用、学習しやすさを軸にAIツールを比較するための雛形です。</p>
+          </article>
+          <article class="article-card">
+            <p class="article-category">LP制作</p>
+            <h3>
+              <a href="articles/chatgpt-lp.html">
+                ChatGPTをLP制作の下書きに使う流れ
+              </a>
+            </h3>
+            <p>構成案、見出し、CTA文言を作るときの使い方を整理します。</p>
+          </article>
+          <article class="article-card">
+            <p class="article-category">GitHub Pages</p>
+            <h3>
+              <a href="articles/github-pages-guide.html">
+                GitHub Pagesで静的サイトを公開する基本
+              </a>
+            </h3>
+            <p>ブランチ、Pull Request、Actions、Pages設定を学ぶための導入記事です。</p>
+          </article>
+          <article class="article-card">
+            <p class="article-category">Web制作ツール</p>
+            <h3>
+              <a href="articles/web-tools-beginner.html">
+                Web制作初心者が最初に見るツール比較
+              </a>
+            </h3>
+            <p>コードエディタ、画像素材、公開環境などを比較する雛形です。</p>
+          </article>
+          <article class="article-card">
+            <p class="article-category">サーバー</p>
+            <h3>
+              <a href="articles/conoha-timing.html">
+                ConoHa WINGやWordPressを検討するタイミング
+              </a>
+            </h3>
+            <p>静的サイトからWordPressへ進む判断材料を整理する記事です。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Compare</p>
+          <h2>初心者向けの比較表</h2>
+          <p>
+            価格やキャンペーンは変動する可能性があります。最終的な情報は必ず公式サイトで確認してください。
+          </p>
+        </div>
+        <div class="table-wrap" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th>選択肢</th>
+                <th>向いている場面</th>
+                <th>確認したい点</th>
+                <th>公式リンク</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ChatGPTなどのAIツール</td>
+                <td>文章案、調査補助、LP構成のたたき台</td>
+                <td>無料枠、利用規約、出力内容の確認方法</td>
+                <td>
+                  <a
+                    href="https://example.com/"
+                    rel="sponsored nofollow"
+                    >公式サイトを確認</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>GitHub Pages</td>
+                <td>静的サイトの公開練習、CI/CD学習</td>
+                <td>公開URL、ブランチ設定、Actionsの実行結果</td>
+                <td>
+                  <a
+                    href="https://pages.github.com/"
+                    rel="sponsored nofollow"
+                    >公式サイトを確認</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>レンタルサーバー / WordPress</td>
+                <td>記事数が増え、運用管理をCMS化したいとき</td>
+                <td>月額費用、更新作業、バックアップ、契約条件</td>
+                <td>
+                  <a
+                    href="https://example.com/"
+                    rel="sponsored nofollow"
+                    >公式サイトを確認</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="cta-band">
+        <div>
+          <p class="eyebrow">Team learning</p>
+          <h2>まずは小さな記事とPRから始める</h2>
+          <p>
+            1記事ずつブランチを分け、Pull Requestでレビューしながらサイトを育てます。
+          </p>
+        </div>
+        <a class="button" href="articles/github-pages-guide.html">公開手順の雛形を見る</a>
       </section>
     </main>
 
-    <script src="assets/js/main.js"></script>
+    <footer class="site-footer">
+      <div>
+        <a class="site-logo" href="index.html">はじめてのAI副業ラボ</a>
+        <p>AIツールとWeb制作を、副業初心者向けに学ぶ静的サイトです。</p>
+      </div>
+      <nav aria-label="フッターナビゲーション">
+        <a href="about.html">このサイトについて</a>
+        <a href="disclosure.html">広告表記</a>
+        <a href="privacy.html">プライバシー</a>
+      </nav>
+      <p class="copyright">&copy; <span id="current-year"></span> はじめてのAI副業ラボ</p>
+    </footer>
+    <script src="js/main.js"></script>
   </body>
 </html>

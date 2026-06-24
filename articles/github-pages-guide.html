@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="GitHub Pagesで静的サイトを公開し、CI/CDを学ぶための手順を整理する記事雛形です。"
+    >
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="はじめてのAI副業ラボ">
+    <meta property="og:title" content="GitHub Pagesで静的サイトを公開する基本">
+    <meta
+      property="og:description"
+      content="ブランチ、Pull Request、Actions、Pages設定を学ぶ導入記事です。"
+    >
+    <meta
+      property="og:url"
+      content="https://yosukeshibayama.github.io/cicd-affiliate/articles/github-pages-guide.html"
+    >
+    <title>GitHub Pagesで静的サイトを公開する基本 | はじめてのAI副業ラボ</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-logo" href="../index.html">はじめてのAI副業ラボ</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          メニュー
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+          <a href="../index.html">トップ</a>
+          <a href="../about.html">このサイトについて</a>
+          <a href="../disclosure.html">広告表記</a>
+          <a href="../privacy.html">プライバシー</a>
+        </nav>
+      </div>
+      <p class="ad-notice">
+        当サイトは広告・アフィリエイトリンクを含む場合があります。
+      </p>
+    </header>
+    <main id="main" class="page-shell">
+      <article class="content-page">
+        <p class="eyebrow">GitHub Pages</p>
+        <h1>GitHub Pagesで静的サイトを公開する基本</h1>
+        <p class="article-meta">更新予定: 記事本文は別ブランチで作り込み予定</p>
+        <p>
+          GitHub Pagesは、HTML/CSS/JavaScriptだけの静的サイトを公開する練習に向いています。
+          このサイトでは、Pull RequestとGitHub Actionsも合わせて学びます。
+        </p>
+        <h2>学習する流れ</h2>
+        <ol>
+          <li>featureブランチで変更する</li>
+          <li>Pull Requestを作る</li>
+          <li>CIでlintを確認する</li>
+          <li>レビュー後にmainへマージする</li>
+          <li>deploy workflowでGitHub Pagesへ公開する</li>
+        </ol>
+        <p>
+          <a href="https://pages.github.com/" rel="sponsored nofollow">
+            GitHub Pagesの公式情報を確認する
+          </a>
+        </p>
+        <section class="related-links">
+          <h2>関連ページ</h2>
+          <ul>
+            <li><a href="../index.html">トップページ</a></li>
+            <li><a href="web-tools-beginner.html">Web制作初心者が最初に見るツール比較</a></li>
+            <li><a href="../disclosure.html">広告・PR表記</a></li>
+            <li><a href="../privacy.html">プライバシーポリシー</a></li>
+          </ul>
+        </section>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <nav aria-label="フッターナビゲーション">
+        <a href="../index.html">トップ</a>
+        <a href="../disclosure.html">広告表記</a>
+        <a href="../privacy.html">プライバシー</a>
+      </nav>
+      <p class="copyright">&copy; <span id="current-year"></span> はじめてのAI副業ラボ</p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
+

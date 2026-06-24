@@ -1,0 +1,14 @@
+{
+  "name": "cicd-affiliate",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI tools, web production, and side work beginner affiliate media.",
+  "scripts": {
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
+
