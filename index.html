@@ -3,15 +3,85 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Youtube</title>
+    <title>不動産価格推移予測システム</title>
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
     <main class="page">
-      <section class="hello">
-        <p>Welcome to my YouTube channel!</p>
-        <h1 id="message">Hello Youtube</h1>
-        <button id="changeMessageButton" type="button">Change message</button>
+      <header class="header">
+        <h1>不動産価格推移予測システム</h1>
+        <p>物件情報を入力すると、今後の価格推移を予測できます</p>
+      </header>
+
+      <section class="container">
+        <div class="form-section">
+          <h2>物件情報入力</h2>
+          <form id="propertyForm">
+            <div class="form-group">
+              <label for="buildingAge">築年数 (年)</label>
+              <input type="number" id="buildingAge" name="buildingAge" placeholder="例: 10" min="0" max="100" required>
+            </div>
+
+            <div class="form-group">
+              <label for="squareMeters">平米数 (㎡)</label>
+              <input type="number" id="squareMeters" name="squareMeters" placeholder="例: 80" min="1" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+              <label for="distanceToStation">駅からの距離 (分)</label>
+              <input type="number" id="distanceToStation" name="distanceToStation" placeholder="例: 5" min="0" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+              <label for="currentPrice">現在の価格 (万円)</label>
+              <input type="number" id="currentPrice" name="currentPrice" placeholder="例: 3500" min="0" step="10" required>
+            </div>
+
+            <div class="form-group">
+              <label for="location">地域</label>
+              <select id="location" name="location" required>
+                <option value="">--選択してください--</option>
+                <option value="tokyo">東京都</option>
+                <option value="kanagawa">神奈川県</option>
+                <option value="osaka">大阪府</option>
+                <option value="kyoto">京都府</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+
+            <button type="submit" class="submit-btn">価格推移を予測</button>
+          </form>
+        </div>
+
+        <div class="result-section" id="resultSection" style="display: none;">
+          <h2>価格推移予測結果</h2>
+          <div class="result-info">
+            <p><strong>現在の価格:</strong> <span id="resultCurrentPrice"></span>万円</p>
+            <p><strong>5年後の予測価格:</strong> <span id="result5YearPrice"></span>万円 (<span id="result5YearChange"></span>)</p>
+            <p><strong>10年後の予測価格:</strong> <span id="result10YearPrice"></span>万円 (<span id="result10YearChange"></span>)</p>
+          </div>
+
+          <h3>価格推移グラフ</h3>
+          <div class="chart-container">
+            <table class="forecast-table">
+              <thead>
+                <tr>
+                  <th>年</th>
+                  <th>予測価格 (万円)</th>
+                  <th>変化率</th>
+                </tr>
+              </thead>
+              <tbody id="forecastTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="analysis">
+            <h3>分析要素</h3>
+            <ul id="analysisList"></ul>
+          </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
       </section>
     </main>
 

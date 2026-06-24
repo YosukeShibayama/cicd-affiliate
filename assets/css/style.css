@@ -4,51 +4,224 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #202124;
-  background: #f4f7fb;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+  min-height: 100vh;
 }
 
 .page {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.hello {
-  width: min(100%, 520px);
-  padding: 40px;
+.header {
   text-align: center;
-  background: #ffffff;
-  border: 1px solid #d9e1ec;
-  border-radius: 8px;
-  box-shadow: 0 12px 32px rgba(32, 33, 36, 0.08);
+  margin-bottom: 40px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
 }
 
-.label {
-  margin: 0 0 12px;
+.header h1 {
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.header p {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-section,
+.result-section {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-section h2,
+.result-section h2,
+.result-section h3 {
+  margin-top: 0;
+  color: #202124;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.result-section h3 {
+  margin-top: 24px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #202124;
   font-size: 14px;
-  color: #5f6368;
 }
 
-h1 {
-  margin: 0 0 28px;
-  font-size: 44px;
-  line-height: 1.15;
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9e1ec;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
 }
 
-button {
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
   min-height: 44px;
-  padding: 0 18px;
-  color: #ffffff;
-  background: #1a73e8;
+  padding: 12px 24px;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: 0;
   border-radius: 6px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button:hover {
-  background: #1558b0;
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.result-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.result-info p {
+  margin: 12px 0;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-info strong {
+  color: #667eea;
+}
+
+.result-info span {
+  font-weight: 600;
+  color: #202124;
+}
+
+.chart-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.forecast-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.forecast-table thead {
+  background: #f0f2f5;
+}
+
+.forecast-table th,
+.forecast-table td {
+  padding: 12px;
+  text-align: right;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.forecast-table th:first-child,
+.forecast-table td:first-child {
+  text-align: left;
+}
+
+.forecast-table th {
+  font-weight: 600;
+  color: #202124;
+  border-bottom: 2px solid #d9e1ec;
+}
+
+.forecast-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.forecast-table td.negative {
+  color: #d33b27;
+  font-weight: 500;
+}
+
+.forecast-table td.positive {
+  color: #188038;
+  font-weight: 500;
+}
+
+.analysis {
+  background: #f0f7ff;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.analysis ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.analysis li {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #202124;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 20px;
 }
