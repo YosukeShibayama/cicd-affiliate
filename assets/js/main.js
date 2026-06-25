@@ -1,7 +1,6 @@
 import PropertyPresenter from './presenter/PropertyPresenter.js';
 import PropertyForm from './components/PropertyForm.js';
 import ForecastResult from './components/ForecastResult.js';
-import ApiTestView from './components/ApiTestView.js';
 
 const { createApp } = Vue;
 
@@ -13,8 +12,7 @@ const app = createApp({
   name: 'RealEstateForecastApp',
   components: {
     PropertyForm,
-    ForecastResult,
-    ApiTestView
+    ForecastResult
   },
   data() {
     return {
@@ -106,8 +104,6 @@ const app = createApp({
           :summary="summary"
         />
       </section>
-
-      <api-test-view />
 
       <section v-if="savedProperties.length > 0" class="saved-properties">
         <h2>保存済み物件</h2>
