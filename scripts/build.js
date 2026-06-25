@@ -20,5 +20,6 @@ function copy(src, dest) {
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });
 copy(path.join(root, 'index.html'), path.join(outDir, 'index.html'));
+copy(path.join(root, 'xit002.html'), path.join(outDir, 'xit002.html'));
 copy(path.join(root, 'assets'), path.join(outDir, 'assets'));
 console.log('Built static site to dist/');

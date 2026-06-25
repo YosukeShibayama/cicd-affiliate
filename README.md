@@ -122,6 +122,27 @@ GitHub リポジトリの `Settings` > `Pages`:
 └── package.json           # npm設定
 ```
 
+## XIT002 API テストページ
+
+新しく `xit002.html` を追加しました。これは不動産情報ライブラリの XIT002 API（都道府県内市区町村一覧取得）を試すための専用ページです。
+
+- URL: `xit002.html`
+- リクエスト: `GET https://www.reinfolib.mlit.go.jp/ex-api/external/XIT002?area=13&language=ja`
+- 必須ヘッダー: `Ocp-Apim-Subscription-Key: {APIキー}`
+- 返却形式: JSON
+
+レスポンス例:
+
+```json
+{
+  "status": "OK",
+  "data": [
+    { "id": "13101", "name": "千代田区" },
+    { "id": "13102", "name": "中央区" }
+  ]
+}
+```
+
 ## 今後の拡張予定
 
 - [ ] より詳細な予測モデルの実装
