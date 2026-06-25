@@ -51,8 +51,15 @@
   margin-top: 20px;
 }
 
-.api-test-form button {
+.api-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 16px;
+}
+
+.api-test-form button {
+  margin-top: 0;
 }
 
 .status-message {

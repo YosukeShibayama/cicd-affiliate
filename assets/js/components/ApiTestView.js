@@ -30,6 +30,15 @@ export default {
         return value;
       }
     },
+    formatRequestBody() {
+      try {
+        const parsed = JSON.parse(this.requestBody);
+        this.requestBody = JSON.stringify(parsed, null, 2);
+        this.error = '';
+      } catch (err) {
+        this.error = `JSON 形式が無効です: ${err.message}`;
+      }
+    },
     async testApi() {
       this.statusMessage = '';
       this.responseBody = '';
@@ -37,8 +46,16 @@ export default {
       this.error = '';
       this.isTesting = true;
 
+      let body;
       try {
-        const body = JSON.parse(this.requestBody);
+        body = JSON.parse(this.requestBody);
+      } catch (err) {
+        this.error = `JSON 形式が無効です: ${err.message}`;
+        this.isTesting = false;
+        return;
+      }
+
+      try {
         const response = await fetch(this.endpoint, {
           method: 'POST',
           headers: {
@@ -57,7 +74,7 @@ export default {
           timestamp: new Date().toLocaleString(),
           endpoint: this.endpoint,
           request: JSON.stringify(body, null, 2),
-          response: this.formattedResponse,
+          response: this.formattedResponse || text,
           status: this.statusMessage
         });
 
@@ -66,7 +83,7 @@ export default {
         }
       } catch (err) {
         console.error(err);
-        this.error = 'APIリクエストに失敗しました。JSON 形式を確認してください。';
+        this.error = `APIリクエストに失敗しました: ${err.message}`;
       } finally {
         this.isTesting = false;
       }
@@ -100,9 +117,14 @@ export default {
         <label for="apiRequestBody">送信データ</label>
         <textarea id="apiRequestBody" v-model="requestBody" rows="10"></textarea>
 
-        <button @click="testApi" class="submit-btn" :disabled="isTesting">
-          {{ isTesting ? 'テスト中...' : 'APIを実行' }}
-        </button>
+        <div class="api-actions">
+          <button @click="formatRequestBody" class="submit-btn" type="button" :disabled="isTesting">
+            リクエストを整形
+          </button>
+          <button @click="testApi" class="submit-btn" type="button" :disabled="isTesting">
+            {{ isTesting ? 'テスト中...' : 'APIを実行' }}
+          </button>
+        </div>
 
         <div v-if="statusMessage" class="status-message">
           <strong>ステータス:</strong> {{ statusMessage }}
