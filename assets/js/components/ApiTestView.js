@@ -1,3 +1,5 @@
+import { fetchWithTimeout, isPlainObject, limitText } from '../security.js';
+
 /**
  * API Test View Component
  * 不動産情報サービスAPI仕様の確認とテストを行う
@@ -19,7 +21,8 @@ export default {
       statusMessage: '',
       isTesting: false,
       error: '',
-      apiHistory: []
+      apiHistory: [],
+      maxRequestChars: 20000
     };
   },
   methods: {
@@ -30,9 +33,20 @@ export default {
         return value;
       }
     },
+    parseRequestBody() {
+      if (this.requestBody.length > this.maxRequestChars) {
+        throw new Error('リクエスト本文が大きすぎます。20000文字以内にしてください。');
+      }
+
+      const parsed = JSON.parse(this.requestBody);
+      if (!isPlainObject(parsed)) {
+        throw new Error('送信データはJSONオブジェクトで入力してください。');
+      }
+      return parsed;
+    },
     formatRequestBody() {
       try {
-        const parsed = JSON.parse(this.requestBody);
+        const parsed = this.parseRequestBody();
         this.requestBody = JSON.stringify(parsed, null, 2);
         this.error = '';
       } catch (err) {
@@ -48,7 +62,7 @@ export default {
 
       let body;
       try {
-        body = JSON.parse(this.requestBody);
+        body = this.parseRequestBody();
       } catch (err) {
         this.error = `JSON 形式が無効です: ${err.message}`;
         this.isTesting = false;
@@ -56,15 +70,17 @@ export default {
       }
 
       try {
-        const response = await fetch(this.endpoint, {
+        const response = await fetchWithTimeout(this.endpoint, {
           method: 'POST',
+          mode: 'cors',
           headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(body)
         });
 
-        const text = await response.text();
+        const text = limitText(await response.text());
         this.responseBody = text;
         this.formattedResponse = this.formatJson(text);
         this.statusMessage = `${response.status} ${response.statusText}`;
@@ -83,7 +99,9 @@ export default {
         }
       } catch (err) {
         console.error(err);
-        this.error = `APIリクエストに失敗しました: ${err.message}`;
+        this.error = err?.name === 'AbortError'
+          ? 'APIリクエストがタイムアウトしました。'
+          : `APIリクエストに失敗しました: ${err.message}`;
       } finally {
         this.isTesting = false;
       }
@@ -115,7 +133,7 @@ export default {
 
       <div class="api-test-form">
         <label for="apiRequestBody">送信データ</label>
-        <textarea id="apiRequestBody" v-model="requestBody" rows="10"></textarea>
+        <textarea id="apiRequestBody" v-model="requestBody" rows="10" :maxlength="maxRequestChars"></textarea>
 
         <div class="api-actions">
           <button @click="formatRequestBody" class="submit-btn" type="button" :disabled="isTesting">

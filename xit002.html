@@ -3,13 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.realestate-lib.example.com https://www.reinfolib.mlit.go.jp; form-action 'self'"
+    >
+    <meta name="referrer" content="no-referrer">
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=(), payment=()"
+    >
     <title>XIT002 API テスト</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/api-test.css">
   </head>
   <body>
     <div id="app"></div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3.5.39/dist/vue.global.prod.js" integrity="sha384-yrrm1s9PCS0I4n39ldjMqQlTorYls89GAS3wXVJooje/BSWnC2vTgky2LIyzRLEo" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="assets/js/xit002.js"></script>
   </body>
 </html>

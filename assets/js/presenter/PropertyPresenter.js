@@ -21,26 +21,27 @@ class PropertyPresenter {
    * @returns {Promise<Object>} 予測結果
    */
   async handlePropertySubmit(propertyData) {
-    // バリデーション
+    // バリデーションと正規化
     const validation = this.propertyModel.validate(propertyData);
     if (!validation.isValid) {
       this.error = validation.errors;
       return { success: false, errors: validation.errors };
     }
 
+    const sanitizedPropertyData = validation.data;
     this.error = null;
     this.isLoading = true;
 
     try {
       // 物件情報を保存
-      this.propertyModel.setProperty(propertyData);
+      this.propertyModel.setProperty(sanitizedPropertyData);
 
       // API経由での予測取得を試みる
-      let forecast = await this.apiClient.fetchForecast(propertyData);
+      let forecast = await this.apiClient.fetchForecast(sanitizedPropertyData);
 
       // APIが失敗した場合はローカルエンジンを使用
       if (!forecast) {
-        forecast = ForecastModel.generateLocalForecast(propertyData);
+        forecast = ForecastModel.generateLocalForecast(sanitizedPropertyData);
       }
 
       this.currentForecast = forecast;

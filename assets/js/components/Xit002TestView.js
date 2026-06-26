@@ -1,3 +1,5 @@
+import { fetchWithTimeout, limitText } from '../security.js';
+
 /**
  * XIT002 API Test View Component
  * 都道府県内市区町村一覧取得 API の試験ページ
@@ -42,6 +44,21 @@ export default {
         return value;
       }
     },
+    validateRequest() {
+      if (!/^\d{2}$/.test(this.area)) {
+        return '都道府県コードは2桁の数字で入力してください。';
+      }
+      if (!['ja', 'en', ''].includes(this.language)) {
+        return '言語は ja / en / 未指定 から選択してください。';
+      }
+      if (!this.subscriptionKey.trim()) {
+        return 'APIキーを入力してください。';
+      }
+      if (this.subscriptionKey.length > 256) {
+        return 'APIキーが長すぎます。';
+      }
+      return '';
+    },
     async testApi() {
       this.statusMessage = '';
       this.responseBody = '';
@@ -49,21 +66,24 @@ export default {
       this.error = '';
       this.isTesting = true;
 
-      if (!this.subscriptionKey) {
-        this.error = 'APIキーを入力してください。';
+      const validationError = this.validateRequest();
+      if (validationError) {
+        this.error = validationError;
         this.isTesting = false;
         return;
       }
 
       try {
-        const response = await fetch(this.fullUrl, {
+        const response = await fetchWithTimeout(this.fullUrl, {
           method: 'GET',
+          mode: 'cors',
           headers: {
-            'Ocp-Apim-Subscription-Key': this.subscriptionKey
+            'Accept': 'application/json',
+            'Ocp-Apim-Subscription-Key': this.subscriptionKey.trim()
           }
         });
 
-        const text = await response.text();
+        const text = limitText(await response.text());
         this.responseBody = text;
         this.formattedResponse = this.formatJson(text);
         this.statusMessage = `${response.status} ${response.statusText}`;
@@ -82,7 +102,9 @@ export default {
         }
       } catch (err) {
         console.error(err);
-        this.error = `APIリクエストに失敗しました: ${err.message}`;
+        this.error = err?.name === 'AbortError'
+          ? 'APIリクエストがタイムアウトしました。'
+          : `APIリクエストに失敗しました: ${err.message}`;
       } finally {
         this.isTesting = false;
       }
@@ -100,7 +122,7 @@ export default {
         <h3>リクエスト</h3>
         <div>
           <label>都道府県コード (area)</label>
-          <input v-model="area" type="text" placeholder="13" />
+          <input v-model.trim="area" type="text" inputmode="numeric" pattern="[0-9]{2}" maxlength="2" placeholder="13" />
         </div>
         <div>
           <label>言語 (language)</label>
@@ -112,7 +134,7 @@ export default {
         </div>
         <div>
           <label>APIキー</label>
-          <input v-model="subscriptionKey" type="text" placeholder="ここにAPIキーを入力" />
+          <input v-model="subscriptionKey" type="password" maxlength="256" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ここにAPIキーを入力" />
         </div>
 
         <h3>実際に送信される URL</h3>
